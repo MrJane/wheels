@@ -5,25 +5,34 @@ import Icon from './src/icon';
 import Input from './src/Input';
 import Row from './src/row';
 import Col from './src/col'
-
+import Toast from './src/toast';
+import plugin from './src/plugin';
 Vue.component('t-button', Button);
 Vue.component('t-button-group', ButtonGroup);
 Vue.component('t-icon', Icon);
 Vue.component('t-input', Input);
 Vue.component('t-row', Row);
 Vue.component('t-col', Col);
+Vue.component('t-toast', Toast);
+Vue.use(plugin);
 new Vue({
   el: '#app',
   data: {
     loading1: false,
     message:'hello'
   },
+  created(){
+  },
   methods:{
     inputChange(e){
       console.log(e.target.value);
       console.log('hahhahhah')
+    },
+    showToast(){
+      this.$toast('我是toast组件')
     }
-  }
+  },
+
 });
 
 

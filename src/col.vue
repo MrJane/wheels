@@ -24,7 +24,6 @@
     data () {
       return {
         gutter: 0,
-        colStyle: {}
       }
     },
     computed: {
