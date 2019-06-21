@@ -7,6 +7,7 @@ import Row from './src/row';
 import Col from './src/col'
 import Toast from './src/toast';
 import plugin from './src/plugin';
+
 Vue.component('t-button', Button);
 Vue.component('t-button-group', ButtonGroup);
 Vue.component('t-icon', Icon);
@@ -19,17 +20,40 @@ new Vue({
   el: '#app',
   data: {
     loading1: false,
-    message:'hello'
+    message: 'hello'
   },
-  created(){
+  created () {
+    // this.$toast('<strong>我是toast组件</strong>', {
+    //   enableHtml: true,
+    //   closeButton: {
+    //     text: '知道了',
+    //     callback (toast) {
+    //       console.log(toast);
+    //     },
+    //
+    //   }
+    // })
+
+    this.$toast('更多文字更多文字更多文字更多文字更多文字更多文字更多文字更多文字', {
+      enableHtml: true,
+      closeButton: {
+        text: '知道了',
+        callback (toast) {
+          console.log(toast);
+        },
+
+      }
+    })
   },
-  methods:{
-    inputChange(e){
+  methods: {
+    inputChange (e) {
       console.log(e.target.value);
       console.log('hahhahhah')
     },
-    showToast(){
-      this.$toast('我是toast组件')
+    showToast () {
+      this.$toast('我是toast组件', {
+        enableHtml: true
+      })
     }
   },
 
