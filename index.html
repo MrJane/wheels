@@ -28,6 +28,24 @@
     <t-input><t-input/> 双闭合就不会有这个问题
     -->
     <!--<t-input/>-->
+    <!--<div style="border: 1px solid green;">-->
+        <!--<div style="width: 100%;display: flex;margin-right: 10px;">-->
+            <!--<div style="width: 30%;padding: 0px 10px;">-->
+                <!--<div style="border: 1px solid red;height: 50px;"></div>-->
+            <!--</div>-->
+            <!--<div style="width: 70%;padding: 0px 10px; height: 50px;">-->
+                <!--<div style="border: 1px solid red;height: 50px;"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div>1</div>-->
+    <!--</div>-->
+    <div style="border: 1px solid pink">
+        <t-row :gutter="25">
+            <t-col span="2"></t-col>
+            <t-col span="22"></t-col>
+        </t-row>
+    </div>
+    <hr/>
     <t-input value="刘艳娥" disabled></t-input>
     <t-input value="简涛" readonly></t-input>
     <t-input error="姓名不少于五个字" v-model="message"></t-input>
@@ -40,9 +58,7 @@
     <t-button>
         刘艳娥
     </t-button>
-    <t-button icon="shezhi" position="right" :loading="loading1" @click="loading1=!loading1">
-        刘艳娥
-    </t-button>
+    <t-button icon="shezhi" position="right" :loading="loading1" @click="loading1=!loading1">刘艳娥</t-button>
     <t-button-group>
         <div>hahh</div>
         <t-button icon="jiantouzuo">上一页</t-button>

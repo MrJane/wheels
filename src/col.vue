@@ -1,26 +1,53 @@
 <template>
-    <div class="col">
-        <slot></slot>
+    <div class="col" :class="[`col-${span}`,`offset-${offset}`]"
+         :style="{paddingLeft:gutter/2+'px',paddingRight:gutter/2+'px'}">
+        <div style="border: 1px solid green;height: 60px">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
 <script>
   export default {
-    name: "Tcol"
+    name: "Tcol",
+    props: {
+      //type如果有多种类型用数组
+      span: {
+        type: [Number, String]
+      },
+      offset: {
+        type: [Number, String]
+      }
+    },
+    data () {
+      return {
+        gutter: 0
+      }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
     .col {
-        height: 60px;
-        background: grey;
+        /*height: 60px;*/
+        /*background: grey;*/
         width: 50%;
-        border: 1px solid red;
+        /*border: 1px solid red;*/
+        /*不能用margin与下面margin-left冲突会导致不对齐，改用padding*/
+        /*margin: 0 10px;*/
+        padding: 0 10px;
         $class: col-;
         /*sass循环生成样式*/
         @for $n from 1 through 24 {
-            &.#{$class}#{$n}{
+            &.#{$class}#{$n} {
                 width: ($n/24)*100%;
+            }
+        }
+        $offset: offset-;
+        /*sass循环生成样式*/
+        @for $n from 1 through 24 {
+            &.#{$offset}#{$n} {
+                margin-left: ($n/24)*100%;;
             }
         }
     }
