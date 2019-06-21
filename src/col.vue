@@ -1,6 +1,8 @@
 <template>
-    <div class="col" :class="[`col-${span}`,`offset-${offset}`]"
-         :style="{paddingLeft:gutter/2+'px',paddingRight:gutter/2+'px'}">
+    <!--这个属性太长需要重构-->
+    <!--<div class="col" :class="[`col-${span}`,`offset-${offset}`]" :style="{paddingLeft:gutter/2+'px',paddingRight:gutter/2+'px'}">-->
+    <div class="col" :class="colClasses"
+         :style="colStyle">
         <div style="border: 1px solid green;height: 60px">
             <slot></slot>
         </div>
@@ -21,7 +23,20 @@
     },
     data () {
       return {
-        gutter: 0
+        gutter: 0,
+        colStyle: {}
+      }
+    },
+    computed: {
+      colStyle () {
+        return {
+          paddingLeft: this.gutter / 2 + 'px',
+          paddingRight: this.gutter / 2 + 'px'
+        }
+      },
+      colClasses () {
+        let {span, offset} = this;
+        return [`col-${span}`, `offset-${offset}`]
       }
     }
   }
