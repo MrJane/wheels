@@ -32,7 +32,7 @@ new Vue({
   data: {
     loading1: false,
     message: 'hello',
-    selectTab:'nba'
+    selectTab: 'nba'
   },
   created () {
     // this.$toast('<strong>我是toast组件</strong>', {
@@ -59,6 +59,10 @@ new Vue({
         */
   },
   methods: {
+    yyy (data) {
+      console.log(data)
+    },
+
     inputChange (e) {
       console.log(e.target.value);
       console.log('hahhahhah')
