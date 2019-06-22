@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <title>轮子</title>
     <style>
-        * {margin: 0;padding: 0;box-sizing: border-box;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html {
             --button-height: 32px;
             --font-size: 14px;
@@ -16,59 +21,93 @@
             --border-color-hover: red;
         }
 
-        #app {margin: 20px;}
-        body {font-size: var(--font-size);}
-        .icon {width: 1em;height: 1em;}
+        #app {
+            margin: 20px;
+        }
+
+        body {
+            font-size: var(--font-size);
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+        }
     </style>
 </head>
 <body>
 <div id="app">
-    <button @click="showToast">显示toast</button>
+    <!--
+     <t-tabs selected="nba" @updated:selected="selectTab">
+
+<t-tabs selected.sync="selectTab">
+这两种写法等价
+
+    -->
+    <t-tabs :selected.sync="selectTab" direction="horizontal">
+        <t-tabs-head>
+            <!--item,panel 的name属性告诉当前选中哪一个-->
+            <template slot="actions">
+                 <button>按钮</button>
+            </template>
+            <t-tabs-item name="news">新闻资讯</t-tabs-item>
+            <t-tabs-item name="nba">NBA体育</t-tabs-item>
+            <t-tabs-item name="finance">财经新闻</t-tabs-item>
+        </t-tabs-head>
+        <t-tabs-body>
+            <t-tabs-panel name="news">新闻资讯相关链接</t-tabs-panel>
+            <t-tabs-panel name="nba">NBA体育相关链接</t-tabs-panel>
+            <t-tabs-panel name="finance">财经新闻相关链接</t-tabs-panel>
+        </t-tabs-body>
+    </t-tabs>
+    <!--<button @click="showToast">显示toast</button>-->
     <!--
     <t-input/>  自閉和的時候下面的按鈕沒有了
     <t-input><t-input/> 双闭合就不会有这个问题
     -->
     <!--<t-input/>-->
     <!--<div style="border: 1px solid green;">-->
-        <!--<div style="width: 100%;display: flex;margin-right: 10px;">-->
-            <!--<div style="width: 30%;padding: 0px 10px;">-->
-                <!--<div style="border: 1px solid red;height: 50px;"></div>-->
-            <!--</div>-->
-            <!--<div style="width: 70%;padding: 0px 10px; height: 50px;">-->
-                <!--<div style="border: 1px solid red;height: 50px;"></div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div>1</div>-->
+    <!--<div style="width: 100%;display: flex;margin-right: 10px;">-->
+    <!--<div style="width: 30%;padding: 0px 10px;">-->
+    <!--<div style="border: 1px solid red;height: 50px;"></div>-->
     <!--</div>-->
-    <div style="border: 1px solid pink">
-        <t-row :gutter="25">
-            <t-col span="2"></t-col>
-            <t-col span="22"></t-col>
-        </t-row>
-    </div>
-    <hr/>
-    <t-input value="刘艳娥" disabled></t-input>
-    <t-input value="简涛" readonly></t-input>
-    <t-input error="姓名不少于五个字" v-model="message"></t-input>
-    <t-input value="简涛" @change="inputChange"></t-input>
-    <p>{{message}}</p>
-    <div style="margin-top: 20px"></div>
-    <t-button icon="shezhi">
-        刘艳娥
-    </t-button>
-    <t-button>
-        刘艳娥
-    </t-button>
-    <t-button icon="shezhi" position="right" :loading="loading1" @click="loading1=!loading1">刘艳娥</t-button>
-    <t-button-group>
-        <div>hahh</div>
-        <t-button icon="jiantouzuo">上一页</t-button>
-        <t-button>更多</t-button>
-        <t-button icon="icon_arrow_right" position="right">下一页</t-button>
-    </t-button-group>
+    <!--<div style="width: 70%;padding: 0px 10px; height: 50px;">-->
+    <!--<div style="border: 1px solid red;height: 50px;"></div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div>1</div>-->
+    <!--</div>-->
+    <!--<div style="border: 1px solid pink">-->
+    <!--<t-row :gutter="25">-->
+    <!--<t-col span="2"></t-col>-->
+    <!--<t-col span="22"></t-col>-->
+    <!--</t-row>-->
+    <!--</div>-->
+    <!--<hr/>-->
+    <!--<t-input value="刘艳娥" disabled></t-input>-->
+    <!--<t-input value="简涛" readonly></t-input>-->
+    <!--<t-input error="姓名不少于五个字" v-model="message"></t-input>-->
+    <!--<t-input value="简涛" @change="inputChange"></t-input>-->
+    <!--<p>{{message}}</p>-->
+    <!--<div style="margin-top: 20px"></div>-->
+    <!--<t-button icon="shezhi">-->
+    <!--刘艳娥-->
+    <!--</t-button>-->
+    <!--<t-button>-->
+    <!--刘艳娥-->
+    <!--</t-button>-->
+    <!--<t-button icon="shezhi" position="right" :loading="loading1" @click="loading1=!loading1">刘艳娥</t-button>-->
+    <!--<t-button-group>-->
+    <!--<div>hahh</div>-->
+    <!--<t-button icon="jiantouzuo">上一页</t-button>-->
+    <!--<t-button>更多</t-button>-->
+    <!--<t-button icon="icon_arrow_right" position="right">下一页</t-button>-->
+    <!--</t-button-group>-->
 </div>
 <div id="test"></div>
 <script src="index.js"></script>
 <script src="//at.alicdn.com/t/font_844572_yvd39gr7b6q.js"></script>
 </body>
 </html>
+
+

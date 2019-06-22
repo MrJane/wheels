@@ -6,6 +6,11 @@ import Input from './src/Input';
 import Row from './src/row';
 import Col from './src/col'
 import Toast from './src/toast';
+import Tabs from './src/tabs';
+import TabBody from './src/tabs-body';
+import TabItem from './src/tabs-item';
+import TabPanel from './src/tabs-panel';
+import TabHead from './src/tabs-head';
 import plugin from './src/plugin';
 
 Vue.component('t-button', Button);
@@ -14,13 +19,20 @@ Vue.component('t-icon', Icon);
 Vue.component('t-input', Input);
 Vue.component('t-row', Row);
 Vue.component('t-col', Col);
-Vue.component('t-toast', Toast);
+Vue.component('t-tabs', Tabs);
+Vue.component('t-tabs-item', TabItem);
+Vue.component('t-tabs-body', TabBody);
+Vue.component('t-tabs-body', TabBody);
+Vue.component('t-tabs-panel', TabPanel);
+Vue.component('t-tabs-head', TabHead);
+
 Vue.use(plugin);
 new Vue({
   el: '#app',
   data: {
     loading1: false,
-    message: 'hello'
+    message: 'hello',
+    selectTab:'nba'
   },
   created () {
     // this.$toast('<strong>我是toast组件</strong>', {
@@ -33,17 +45,18 @@ new Vue({
     //
     //   }
     // })
+    /*
+        this.$toast('更多文字更多文字更多文字更多文字更多文字更多文字更多文字更多文字', {
+          enableHtml: true,
+          closeButton: {
+            text: '知道了',
+            callback (toast) {
+              console.log(toast);
+            },
 
-    this.$toast('更多文字更多文字更多文字更多文字更多文字更多文字更多文字更多文字', {
-      enableHtml: true,
-      closeButton: {
-        text: '知道了',
-        callback (toast) {
-          console.log(toast);
-        },
-
-      }
-    })
+          }
+        })
+        */
   },
   methods: {
     inputChange (e) {
